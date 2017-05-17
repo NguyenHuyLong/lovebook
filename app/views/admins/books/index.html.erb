@@ -11,8 +11,12 @@
         <div class="card">
           <div class="book-image"><%= book_image book %></div>
           <div class="container">
-            <h5><%= link_to book.title.truncate(Settings.book_title), admins_book_path(book) %></h5>
-            <%= book.author %>
+            <h4><%= link_to book.title.truncate(Settings.book_title), admins_book_path(book) %></h4>
+            <%= book.author %><br>
+            <div class="book_rating">
+              <%= render "books/book_rating", book: book %>
+            </div>
+            <br>
           </div>
         </div>
       </div>

@@ -1,1 +1,2 @@
-$('li#comment-<%= @comment.id %>').slideUp();
+$('#comment-<%= @comment.id %>').slideUp();
+$('.comment-count').html('<b>(<%= @comment.review.comments.count %>)</b>');

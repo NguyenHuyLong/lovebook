@@ -1,9 +1,13 @@
 <div class="col-md-3">
   <div class="card">
+    <div class="book-image"><%= book_image book %></div>
     <div class="container">
-      <div class="book-image"><%= book_image book %></div>
-      <h5><b><%= link_to book.title.truncate(Settings.book_title), book %></b></h5>
-      <p><%= book.author %></p>
+      <h4><%= link_to book.title.truncate(Settings.book_title), book %></h4>
+      <%= book.author %><br>
+      <div class="book_rating">
+        <%= render "books/book_rating", book: book %>
+      </div>
+      <br>
     </div>
   </div>
 </div>

@@ -1,1 +1,3 @@
-$('#comment').append('<%= j render "comment", comment: @comment %>');
+$('#comments').prepend('<%= j render @comment %>');
+$('#comment_content').val('');
+$('.comment-count').html('<b>(<%= @comment.review.comments.count %>)</b>');

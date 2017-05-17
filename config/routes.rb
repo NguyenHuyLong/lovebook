@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :favorite_books, only: [:create, :destroy]
   resources :requests, except: :show
   resources :reviews, except: [:index]
-  resources :comments, only: [:create, :update, :destroy]
+  resources :comments, only: [:create, :edit, :update, :destroy]
   resources :reports, only: [:create]
   resources :activities, only: [:index]
 
