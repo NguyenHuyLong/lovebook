@@ -36,8 +36,8 @@ class ReviewsController < ApplicationController
   def update
     if @review.update_attributes review_params
       book_rating
-      flash[:success] = t "user.profile_updated"
-      redirect_to @review.book
+      flash[:success] = t "flash.success.review_update"
+      redirect_to @review
     else
       render :edit
     end

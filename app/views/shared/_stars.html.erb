@@ -1,9 +1,9 @@
 <% 1.upto 5 do |index| %>
   <%
     star =
-      if index <= book.rating
+      if index <= rating
         "fa-star"
-      elsif index - 0.5 == book.rating
+      elsif index - 0.5 == rating
         "fa-star-half-o"
       else
         "fa-star-o"
@@ -12,7 +12,3 @@
 
   <i class="fa <%= star %> rate fa-lg" style="color: yellow"></i>
 <% end %>
-
-<%= book.rating %>
-
-(<%= book.reviews.count %> danh gia)

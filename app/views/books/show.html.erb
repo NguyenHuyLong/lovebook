@@ -39,16 +39,12 @@
     <% @reviews.each do |review| %>
       <li id="review-<%= review.id %>">
         <div class="col-md-10">
-          <%= link_to review.user.name, review.user %>
-          <%= t "user.reviews.rate_it", rate: review.rating %>
+          <%= link_to review.user.name, review.user %> rate it
+          <%= render "shared/stars", rating: review.rating %>
         </div>
 
         <div class="col-md-2">
           <% if logged_in? && current_user.current_user?(review.user) %>
-            <a data-toggle="collapse" href="#comment-<%= review.id %>">
-              <%= t "comment" %>
-            </a>
-            <%= t "divide" %>
             <%= link_to t("edit"), edit_review_path(review) %>
             <%= t "divide" %>
             <%= link_to t("delete"), review, method: :delete,
@@ -61,41 +57,6 @@
             <%= t "posted_ago", time: time_ago_in_words(review.created_at) %> |
             <%= link_to "See more", review %>
           </span>
-
-          <% if logged_in? %>
-            <div id="comment-<%= review.id %>" class="col-md-12 collapse">
-              <%= render "comments/form", review: review %>
-            </div>
-          <% end %>
-
-          <div id="comment" class="col-md-10">
-            <ul class="category">
-              <% review.comments.each do |comment| %>
-                <li id="comment-<%= comment.id %>">
-                  <div><%= link_to comment.user.name, comment.user %></div>
-                  <div class="col-md-9"><%= comment.content %></div>
-                  <div class="col-md-3">
-                    <% if current_user.current_user? comment.user %>
-                      <a data-toggle="collapse" href="#form-<%= comment.id %>"><%= t "edit" %></a>
-                      <%= t "divide" %>
-                      <%= link_to t("delete"), comment_path(comment), method: :delete,
-                        data: {confirm: t("confirm")}, remote: true %>
-                    <% end %>
-                  </div>
-                  <span class="timestamp">
-                    <%= t "posted_ago", time: time_ago_in_words(comment.created_at) %>
-                  </span>
-                  <div id="form-<%= comment.id %>" class="col-md-12 collapse">
-                    <%= form_for comment, html: {method: :put}, remote: true do |f| %>
-                      <%= f.hidden_field :review_id, value: review.id %>
-                      <div class="col-md-10"><%= f.text_field :content, class: "form-control" %></div>
-                      <div class="col-md-2"><%= f.submit t("comment") %></div>
-                    <% end %>
-                  </div>
-                </li>
-              <% end %>
-            </ul>
-          </div>
         </div>
       </li>
     <% end %>

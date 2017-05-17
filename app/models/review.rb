@@ -5,6 +5,5 @@ class Review < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :activities, dependent: :destroy
 
-  validates :content, presence: true
   validates :rating, presence: true
 end

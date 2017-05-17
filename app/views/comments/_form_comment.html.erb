@@ -1,0 +1,9 @@
+<%= form_for @comment, html: {method: :put}, remote: true do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="col-md-9">
+    <%= f.text_area :content, class: "form-control" %>
+  </div>
+  <div class="col-md-3">
+    <%= f.submit t("comment"), class: "btn btn-primary" %>
+  </div>
+<% end %>

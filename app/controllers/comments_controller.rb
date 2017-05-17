@@ -1,29 +1,40 @@
 class CommentsController < ApplicationController
   before_action :logged_in_user
-  before_action :find_comment, only: [:update, :destroy]
+  before_action :find_comment, only: [:edit, :update, :destroy]
 
   def create
     @comment = current_user.comments.new comment_params
-    unless @comment.save
-      flash[:danger] = t "cannot_create_comment"
+    if @comment.save
+      respond_to do |format|
+        format.js
+      end
+    else
+      render :new
     end
-    redirect_to @comment.review.book
+  end
+
+  def edit
   end
 
   def update
-    unless @comment.update_attributes comment_params
-      flash[:danger] = t "flash.danger.cannot_update_comment"
+    if @comment.update_attributes comment_params
+      respond_to do |format|
+        format.js
+      end
+    else
+      flash[:danger] = t "flash.danger.cannot_update"
+      redirect_to @comment.review
     end
-    redirect_to @comment.review.book
   end
 
   def destroy
-    unless @comment.destroy
-      flash[:danger] = t "flash.danger.cannot_delete_comment"
-    end
-    respond_to do |format|
-      format.html {redirect_to @comment}
-      format.js
+    if @comment.destroy
+      respond_to do |format|
+        format.js
+      end
+    else
+      flash[:danger] = t "flash.danger.cannot_delete"
+      redirect_to @comment.review
     end
   end
 

@@ -29,7 +29,7 @@
 
       <%= f.label :category %>
       <%= f.select :category_id, @categories.collect{|key| [key.name, key.id]},
-        include_blank: t("book.search.category_blank"), class: "form-control" %>
+        {include_blank: t("book.search.category_blank")}, {class: "form-control"} %>
 
       <%= f.label :image %>
       <%= f.file_field :image, class: "upload-image" %>
