@@ -1,0 +1,21 @@
+<%= provide :title, t("category") %>
+<div class="container">
+  <div class="col-md-12">
+    <h2><%= t "category" %></h2>
+    <div class="col-md-5">
+      <div>
+        <%= form_for [:admins, @category], remote: true do |f| %>
+          <%= f.label :name %><br>
+          <%= f.text_field :name %>
+          <%= f.submit t(".new"), class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-7 categories">
+      <ol class="category">
+        <%= render @categories %>
+      </ol>
+    </div>
+  </div>
+</div>

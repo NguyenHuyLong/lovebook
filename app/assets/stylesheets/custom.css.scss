@@ -1,0 +1,320 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* universal */
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.5em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: $gray-light;
+    text-decoration: none;
+  }
+}
+
+#head {
+  color: white;
+  &:hover {
+    color: $gray-light;
+    text-decoration: none;
+  }
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.checkbox {
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+  input[type="checkbox"] {
+    margin-left: -130px;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
+/* Category index */
+
+.category {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 12px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
+}
+
+.avatar_edit {
+  margin-top: 15px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.book-image {
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+  margin-left: 23px;
+}
+
+.col-md-3 {
+  padding-bottom: 30px;
+}
+
+.book-description {
+  border-bottom: 1px solid #eaeaea;
+  border-top: 1px solid #eaeaea;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: justify;
+  text-indent: 50px;
+  font-size: 16px;
+}
+
+.search {
+  width: 800px;
+  height: 50px;
+}
+
+.book-index {
+  padding-top: 35px;
+  border-top: 1px solid #eaeaea;
+}
+
+.reviews {
+  border-top: 1px solid #778899;
+  padding-top: 10px;
+  margin-top: 10px;
+  padding-left: 25px;
+  padding-bottom: 25px;
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 20px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+.rating {
+  width: 100px;
+}
+
+td {
+  padding-right: 35px;
+  padding-bottom: 10px;
+}
+
+.review-title {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  padding-top: 35px;
+}
+
+.timestamp {
+  color: $gray-light;
+  display: block;
+  font-size: 12px;
+}
+
+.users, .favourite_book {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 15px;
+}
+
+.glyphicon-fix {
+  font-size: 23px;
+  position: relative;
+}
+
+.main {
+  font-size: 23px;
+  color: red;
+}
+
+.favorite {
+  position: absolute;
+  background-color: transparent !important;
+  top: 0;
+  left: 0;
+  border: none;
+  z-index: 9999;
+  width: 100%;
+  height: 100% !important;
+}
+
+.button {
+  margin-left: 111px;
+  margin-bottom: 25px;
+}
+
+.btn-size {
+  width: 80px;
+}
+
+th {
+  width: 240px;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.center {
+  text-alight: center;
+}

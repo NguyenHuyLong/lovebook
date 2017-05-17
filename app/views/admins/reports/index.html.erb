@@ -1,0 +1,35 @@
+<% provide :title, "Reports" %>
+<h1>All Reports</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="info">
+          <th class="center">User</th>
+          <th class="center">Reported</th>
+          <th class="center">Content</th>
+          <th class="center">Report at</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reports.each do |report| %>
+          <tr>
+            <td><%= report.user.name %></td>
+            <td>
+              <%= User.find_by(id: report.reported_user).name %>'s
+              <% if report.review %>
+                <%= link_to "review", report.review %>
+              <% else %>
+                review
+              <% end %>
+            </td>
+            <td><%= report.content %></td>
+            <td><%= report.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

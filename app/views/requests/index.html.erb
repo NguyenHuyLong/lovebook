@@ -1,0 +1,51 @@
+<% provide :title, t("user.request.all") %>
+<h1><%= t "user.request.all" %></h1>
+
+<div class="row">
+  <div class="button">
+    <%= link_to t("user.request.new"), new_request_path, class: "btn btn-primary" %>
+  </div>
+
+  <div class="col-md-10 col-md-offset-1">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="info">
+          <th class="center"><%= t "user.request.book_name" %></th>
+          <th class="center"><%= t "user.request.author" %></th>
+          <th class="center"><%= t "user.request.status" %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @requests.each do |request| %>
+          <tr id="request-user-<%= request.id %>">
+            <td><%= request.book_name %></td>
+            <td><%= request.book_author %></td>
+            <td class="center">
+              <% if request.pending? %>
+                <h4><span class="label label-warning">
+                  <%= t "user.request.pending" %>
+                </span></h4>
+              <% elsif request.approve? %>
+                <h4><span class="label label-success">
+                  <%= t "user.request.approve" %>
+                </span></h4>
+              <% else %>
+                <h4><span class="label label-danger">
+                  <%= t "user.request.reject" %>
+                </span></h4>
+              <% end %>
+            </td>
+            <td class="center">
+              <%= link_to t("edit"), edit_request_path(request),
+                class: "btn btn-size btn-success" %>
+              <%= link_to t("delete"), request, method: :delete,
+                data: {confirm: t("confirm")}, remote: true,
+                class: "btn btn-size btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<li class="col-md-12">
+  <div id="category-<%= category.id %>" class="col-md-8">
+    <%= link_to category.name, admins_category_path(category) %>
+  </div>
+  <div class="col-md-2 container">
+    <button type="button" class="btn btn-success" data-toggle="collapse"
+      data-target="#demo-<%= category.id %>"><%= t"edit" %></button>
+  </div>
+
+  <div class="col-md-2 listButton">
+    <%= link_to t("delete"), admins_category_path(category),
+      method: :delete, data: {confirm: t("confirm")}, class: "btn btn-danger" %>
+  </div>
+
+  <div id="demo-<%= category.id %>" class="collapse col-md-10">
+    <%= form_for [:admins, category], method: "put", remote: true do |f| %>
+      <%= f.text_field :name, class: "col-md-5" %>
+      <%= f.submit t("update"), class: "col-md-4 col-md-offset-1" %>
+    <% end %>
+  </div>
+</li>

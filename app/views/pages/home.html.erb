@@ -1,0 +1,49 @@
+<% provide :title, t("home") %>
+<% unless logged_in? %>
+  <div class="center jumbotron">
+    <h1><%= t "welcome" %></h1>
+    <h1><%= t "title_page" %></h1>
+    <h2><%= t "slogan" %></h2>
+    <%= link_to t("sign_up_now"), new_user_path, class: "btn btn-lg btn-primary" %>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-md-3">
+      <% @random_books.each do |book| %>
+        <%= link_to book_image(book), book %><br>
+        <%= link_to book.title %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <ul class="users">
+        <% @feed_items.each do |activity| %>
+          <li>
+            <div class="col-md-2">
+              <%= user_avatar activity.user %>
+            </div>
+            <div class="col-md-10">
+              <%= link_to activity.user.name, activity.user %> đã viết bài đánh giá cho
+              <%= link_to activity.book.title, activity.book %><br>
+              Rating:
+              <% 1.upto 5 do |index| %>
+                <%
+                  star =
+                    if index <= activity.review.rating
+                      "fa-star"
+                    elsif index - 0.5 == activity.review.rating
+                      "fa-star-half-o"
+                    else
+                      "fa-star-o"
+                    end
+                %>
+                <i class="fa <%= star %> rate fa-lg" style="color: yellow"></i>
+              <% end %><br>
+              <%= t "posted_ago", time: time_ago_in_words(activity.review.created_at) %>
+              | <%= link_to "See more", activity.review %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

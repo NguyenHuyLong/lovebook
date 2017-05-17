@@ -1,0 +1,57 @@
+<% provide :title, @user.name %>
+
+<div class="container">
+  <div class="col-md-4">
+    <h3><%= user_avatar @user %> <%= @user.name %></h3>
+    <section class="stats">
+      <%= render "shared/stats" %>
+    </section>
+    <%= render "follow_form" %>
+  </div>
+
+  <div class="col-md-8">
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a data-toggle="tab" href="#favourite_book">
+          <%= t "user.show.favourite_book" %>
+        </a>
+      </li>
+      <li><a data-toggle="tab" href="#user_eview"><%= t "review" %></a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="favourite_book" class="tab-pane fade in active">
+        <ul class="favourite_book">
+          <% @user.favorite_books.each do |favorite_book| %>
+            <li>
+              <div class="col-md-2">
+                <%= favourite_book_image favorite_book.book %>
+              </div>
+              <div class="col-md-8">
+                <h4><%= link_to favorite_book.book.title, favorite_book.book %></h4>
+                <%= favorite_book.book.author %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div id="user_eview" class="tab-pane fade">
+        <ul class="favourite_book">
+          <% @user.reviews.each do |review| %>
+            <li>
+              <div class="col-md-2">
+                <%= favourite_book_image review.book %>
+              </div>
+              <div class="col-md-8">
+                <%= t "user.show.write_review" %><%= link_to review.book.title, review.book %>
+                <%= t "user.show.review_in", time: time_ago_in_words(review.created_at) %><br>
+                <%= t "user.show.rate", rate: review.rating %><br>
+                <%= link_to "See more", review %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

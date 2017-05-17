@@ -1,0 +1,14 @@
+<%= form_for @review do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <%= f.hidden_field :book_id, value: @book.id %>
+  <div class="rating">
+    <%= f.label :rating, t("rate") %>
+    <%= f.select :rating,
+      options_for_select(Settings.ratings.min_rate..Settings.ratings.max_rate,
+      selected: @review.rating), {include_blank: t("user.reviews.blank")},
+      class: "form-control" %>
+  </div>
+  <%= f.label :content, t("user.reviews.content") %>
+  <%= f.text_area :content, size: "60x12", class: "ckeditor" %>
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,6 @@
+<%= t "user.reviews.community_review" %>
+<% if logged_in? %>
+  <% unless @reviews.pluck(:user_id).include? current_user.id %>
+    <%= link_to t("user.reviews.your_review"), new_review_path(id: @book) %>
+  <% end %>
+<% end %>

@@ -1,0 +1,103 @@
+<% provide :title, @book.title %>
+<div class="row">
+  <div class="col-md-4">
+    <%= book_image_show @book %>
+  </div>
+  <div class="col-md-8">
+    <h3><b><%= @book.title %></b></h3>
+    <i><%= t "book.by" %></i> <%= @book.author %></br>
+
+    <% if logged_in? %>
+      <%= render "favorite_form" %>
+    <% else %>
+      <i class="glyphicon glyphicon-heart glyphicon-fix" aria-hidden="true"></i>
+      <%= @book.favorite_books.count %>
+    <% end %>
+
+    <div class="book_rating">
+      <%= render "book_rating", book: @book %>
+    </div>
+
+    <div class="col-md-12">
+      <div class="book-description">
+        <%= raw(@book.description) %>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <b><%= t "book.publish_date" %></b><%= l @book.publish_date %></br>
+      <b><%= t "book.pages" %></b><%= @book.number_of_pages %>
+    </div>
+  </div>
+</div>
+
+<p class="review-title">
+  <%= render "books/review" %>
+</p>
+
+<div class="reviews">
+  <ul>
+    <% @reviews.each do |review| %>
+      <li id="review-<%= review.id %>">
+        <div class="col-md-10">
+          <%= link_to review.user.name, review.user %>
+          <%= t "user.reviews.rate_it", rate: review.rating %>
+        </div>
+
+        <div class="col-md-2">
+          <% if logged_in? && current_user.current_user?(review.user) %>
+            <a data-toggle="collapse" href="#comment-<%= review.id %>">
+              <%= t "comment" %>
+            </a>
+            <%= t "divide" %>
+            <%= link_to t("edit"), edit_review_path(review) %>
+            <%= t "divide" %>
+            <%= link_to t("delete"), review, method: :delete,
+              data: {confirm: t("confirm")}, remote: true %>
+          <% end %>
+        </div>
+        <div class="col-md-12">
+          <%= raw(review.content) %>
+          <span class="timestamp">
+            <%= t "posted_ago", time: time_ago_in_words(review.created_at) %> |
+            <%= link_to "See more", review %>
+          </span>
+
+          <% if logged_in? %>
+            <div id="comment-<%= review.id %>" class="col-md-12 collapse">
+              <%= render "comments/form", review: review %>
+            </div>
+          <% end %>
+
+          <div id="comment" class="col-md-10">
+            <ul class="category">
+              <% review.comments.each do |comment| %>
+                <li id="comment-<%= comment.id %>">
+                  <div><%= link_to comment.user.name, comment.user %></div>
+                  <div class="col-md-9"><%= comment.content %></div>
+                  <div class="col-md-3">
+                    <% if current_user.current_user? comment.user %>
+                      <a data-toggle="collapse" href="#form-<%= comment.id %>"><%= t "edit" %></a>
+                      <%= t "divide" %>
+                      <%= link_to t("delete"), comment_path(comment), method: :delete,
+                        data: {confirm: t("confirm")}, remote: true %>
+                    <% end %>
+                  </div>
+                  <span class="timestamp">
+                    <%= t "posted_ago", time: time_ago_in_words(comment.created_at) %>
+                  </span>
+                  <div id="form-<%= comment.id %>" class="col-md-12 collapse">
+                    <%= form_for comment, html: {method: :put}, remote: true do |f| %>
+                      <%= f.hidden_field :review_id, value: review.id %>
+                      <div class="col-md-10"><%= f.text_field :content, class: "form-control" %></div>
+                      <div class="col-md-2"><%= f.submit t("comment") %></div>
+                    <% end %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,12 @@
+remember: "1"
+book_title: 35
+book_size: "200x275"
+book_size_show: "300x400"
+per_page: 15
+avatar_size: "50x50"
+favourite_book_image: "80x100"
+book_size_review: "140x190"
+
+ratings:
+  min_rate: 1
+  max_rate: 5

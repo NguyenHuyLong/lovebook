@@ -1,23 +1,143 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  welcome: "Welcome to the"
+  title_page: "Book Review System"
+  home: "Home"
+  login: "Login"
+  logout: "Logout"
+  category: "Category"
+  books: "Book"
+  slogan: "Meet your next favourite book"
+  sign_up_now: "Sign Up Now!"
+  framgia: "Framgia VietNam"
+  remember_me: "Remember me"
+  error: "error"
+  error_form: "The form contains"
+  new_user: "New user?"
+  account: "Account"
+  profile: "Profile"
+  settings: "Settings"
+  edit: "Edit"
+  delete: "Delete"
+  update: "Update"
+  confirm: "Confirm"
+  books: "Book"
+  search: "Search"
+  all_book: "All Books"
+  add_book: "Add new book"
+  rating: "Rating"
+  review: "Review"
+  rate: "Rate"
+  posted_ago: "Posted %{time} ago"
+  confirm: "You sure?"
+  divide: " | "
+  users: "Users"
+  following: "Following"
+  follower: "Followers"
+  unfollow: "Unfollow"
+  follow: "Follow"
+  request: "Request"
+  comment: "Comment"
+
+
+  flash:
+    danger:
+      please_log_in: "Please log in"
+      invalid_login: "Invalid email/password combination"
+      not_logged_in: "Not logged in"
+      user_not_exist: "User does not exist"
+      user_not_admin: "User doesn't admin"
+      category_not_found: "Category not found"
+      category_not_update: "Category wasn't updated"
+      book_not_found: "Book not found"
+      book_not_update: "Book wasn't updated"
+      cannot_delete_review: "Error! Cann't delete review"
+      review_not_found: "Review not found"
+      request_not_found: "Request not found"
+      cannot_delete_request: "Error! Cann't delete request"
+      comment_not_found: "Comment not found"
+      cannot_delete_comment: "Can't delete comment"
+      cannot_update_comment: "Can't update comment"
+      cannot_create_comment: "Can't create comment"
+    success:
+      delete_category: "Category was successfully deleted"
+      update_category: "Category was successfully updated"
+      book_create: "Book was successfully created"
+      book_delete: "Book was successfully deleted"
+      book_update: "Book was successfully updated"
+      create_review: "Create review successful"
+      send_request: "Send request successful!"
+
+  user:
+    signup: "Sign up"
+    confirmation: "Confirm Password"
+    registered_successfully: "Registered successfully! You can login right now."
+    edit_user: "Edit User"
+    update: "Update your profile"
+    remove_avatar: "Remove avatar"
+    profile_updated: "Profile updated!"
+    button:
+      create_account: "Create my account"
+      save_changes: "Save changes"
+    reviews:
+      your_review: "(Add your review)"
+      community_review: "COMMUNITY REVIEWS"
+      rate_it: " rate it %{rate}/5"
+      blank: "- Rate -"
+      content: "What do you think?"
+      button_post: "Post review"
+      button_save: "Save review"
+      new: " > Review"
+      edit: " > Edit review"
+    following: "%{following} following"
+    follower: "%{follower} follower"
+    all_user: "All Users"
+    request:
+      new_title: "Send a new request"
+      all: "All Requests"
+      book_name: "Book name"
+      user: "User"
+      approve: "Approve"
+      reject: "Reject"
+      pending: "Pending"
+      add_new_book: "(Add new book)"
+      edit: "Edit request"
+      delete:
+      new: "+ New request"
+      status: "Status"
+      button:
+        new: "Send request"
+        edit: "Save change"
+    show:
+      favourite_book: "Favourite Book"
+      write_review: "Write review about "
+      review_in: " in %{time} ago."
+      rate: "Rating: %{rate}/5"
+
+  admins:
+    categories:
+      index:
+        new: "New Category"
+    books:
+      new:
+        create_book: "Create new Book"
+        number_of_book: "The number of pages"
+      edit:
+        edit_book: "Edit Book"
+
+  book:
+    all: "All Books"
+    by: "by"
+    publish_date: "Publish date: "
+    search:
+      placeholder: "Search books..."
+      category_blank: "- All categories -"
+    pages: "The number of pages: "
+    category: "Category: "
+    description: "Description: "
+    search:
+      placeholder: "Search books..."
+      category_blank: "- All books -"
+
+  time:
+    formats:
+      default: "%d-%m-%Y"

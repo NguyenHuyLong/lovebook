@@ -1,0 +1,9 @@
+<%= form_for @favorite_book, html: {method: :delete}, remote: true do |f| %>
+  <%= f.hidden_field :book_id, value: @book.id %>
+  <span class="glyphicon glyphicon-heart main glyphicon-fix">
+    <%= f.submit "", class: "favorite" %>
+  </span>
+  <span id="fav">
+    <%= @book.favorite_books.count %>
+  </span>
+<% end %>

@@ -1,0 +1,18 @@
+<%= provide :title, @category.name %>
+<h1><%= @category.name %></h1>
+
+<div class="container">
+  <div class="col-md-12">
+    <% @category.books.each do |book| %>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="book-image"><%= book_image book %></div>
+          <div class="container">
+            <h5><%= link_to book.title.truncate(Settings.book_title), admins_book_path(book) %></h5>
+            <%= book.author %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

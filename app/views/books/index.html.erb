@@ -1,0 +1,26 @@
+<% provide :title, t("book.all") %>
+
+<h1><%= t "book.all" %></h1>
+
+<div class="search">
+  <%= form_tag books_path, method: :get, remote: true do %>
+    <div class="col-md-4">
+      <%= text_field_tag :search_param, params[:search_param],
+        placeholder: t("book.search.placeholder"), class: "form-control" %>
+    </div>
+    <div class="col-md-4">
+      <%= select_tag :category_id, options_from_collection_for_select(
+        @categories, :id, :name, params[:category_id]),
+        include_blank: t("book.search.category_blank"),
+        class: "form-control" %>
+    </div>
+    <div class="col-md-2">
+      <%= submit_tag t("search"), name: nil, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+<div class="container">
+  <div class="book-index">
+    <%= render @books %>
+  </div>
+</div>

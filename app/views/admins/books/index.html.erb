@@ -1,0 +1,21 @@
+<%= provide :title, t("books") %>
+<h1><%= t "all_book" %></h1>
+<div class="col-md-offset-1 listButton">
+  <%= link_to t("add_book"),  new_admins_book_path, class: "btn btn-primary" %>
+</div></br>
+
+<div class="container">
+  <div class="col-md-12">
+    <% @books.each do |book| %>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="book-image"><%= book_image book %></div>
+          <div class="container">
+            <h5><%= link_to book.title.truncate(Settings.book_title), admins_book_path(book) %></h5>
+            <%= book.author %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
