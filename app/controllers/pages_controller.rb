@@ -2,8 +2,8 @@ class PagesController < ApplicationController
   def show
     if valid_page?
       if logged_in?
-        @feed_items = current_user.feed.paginate(page: params[:page], per_page: 2)
-        @random_books = Book.order('RANDOM()').limit(3)
+        @feed_items = current_user.feed.paginate(page: params[:page], per_page: 5)
+        @random_books = Book.order("RANDOM()").limit(5)
       end
 
       render template: "pages/#{params[:title]}"

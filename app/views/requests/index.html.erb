@@ -37,11 +37,13 @@
               <% end %>
             </td>
             <td class="center">
-              <%= link_to t("edit"), edit_request_path(request),
-                class: "btn btn-size btn-success" %>
-              <%= link_to t("delete"), request, method: :delete,
-                data: {confirm: t("confirm")}, remote: true,
-                class: "btn btn-size btn-danger" %>
+              <% if request.pending? %>
+                <%= link_to t("edit"), edit_request_path(request),
+                  class: "btn btn-size btn-success" %>
+                <%= link_to t("delete"), request, method: :delete,
+                  data: {confirm: t("confirm")}, remote: true,
+                  class: "btn btn-size btn-danger" %>
+              <% end %>
             </td>
           </tr>
         <% end %>

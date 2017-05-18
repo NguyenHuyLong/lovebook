@@ -10,6 +10,7 @@
 <% else %>
   <div class="row">
     <div class="col-md-3">
+      <h2>Hôm nay <br> bạn đọc gì?</h2>
       <% @random_books.each do |book| %>
         <div class="card">
           <div class="book-image"><%= book_image book %></div>
@@ -47,6 +48,10 @@
         <% end %>
       </ul>
       <%= will_paginate @feed_items %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to (image_tag "nhanam.jpg", height: '300', width: '300'),
+        "http://www.nhanam.vn" %>
     </div>
   </div>
 <% end %>

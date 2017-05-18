@@ -11,7 +11,7 @@ class Admins::BooksController < ApplicationController
 
   def new
     @book = Book.new
-    @categories = Category.all
+    @categories = Category.all.order name: :asc
   end
 
   def create
@@ -20,7 +20,7 @@ class Admins::BooksController < ApplicationController
       flash[:success] = t "flash.success.book_create"
       redirect_to admins_book_path @book
     else
-      @categories = Category.all
+      @categories = Category.all.order name: :asc
       render :new
     end
   end
@@ -29,7 +29,7 @@ class Admins::BooksController < ApplicationController
   end
 
   def edit
-    @categories = Category.all
+    @categories = Category.all.order name: :asc
   end
 
   def update
