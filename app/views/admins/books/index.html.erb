@@ -1,11 +1,31 @@
 <%= provide :title, t("books") %>
 <h1><%= t "all_book" %></h1>
-<div class="col-md-offset-1 listButton">
-  <%= link_to t("add_book"),  new_admins_book_path, class: "btn btn-primary" %>
-</div></br>
+
+<div class="col-md-12">
+  <div class="col-md-10">
+    <%= form_tag books_path, method: :get, remote: true do %>
+      <div class="col-md-5">
+        <%= text_field_tag :search_param, params[:search_param],
+          placeholder: t("book.search.placeholder"), class: "form-control" %>
+      </div>
+      <div class="col-md-3">
+        <%= select_tag :category_id, options_from_collection_for_select(
+          @categories, :id, :name, params[:category_id]),
+          include_blank: t("book.search.category_blank"),
+          class: "form-control" %>
+      </div>
+      <div class="col-md-2">
+        <%= submit_tag t("search"), name: nil, class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-2">
+    <%= link_to t("add_book"), new_admins_book_path, class: "btn btn-primary" %>
+  </div>
+</div>
 
 <div class="container">
-  <div class="col-md-12">
+  <div class="book-index col-md-12">
     <% @books.each do |book| %>
       <div class="col-md-3">
         <div class="card">
@@ -21,5 +41,6 @@
         </div>
       </div>
     <% end %>
+    <%= will_paginate %>
   </div>
 </div>

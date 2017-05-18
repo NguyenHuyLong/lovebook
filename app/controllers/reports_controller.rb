@@ -2,7 +2,7 @@ class ReportsController < ApplicationController
   def create
     @report = current_user.reports.new report_params
     if @report.save
-      flash[:success] = "Report successfull"
+      flash[:success] = "Gửi báo cáo thành công"
       redirect_to @report.review
     end
   end

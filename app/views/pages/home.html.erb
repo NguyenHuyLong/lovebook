@@ -11,8 +11,17 @@
   <div class="row">
     <div class="col-md-3">
       <% @random_books.each do |book| %>
-        <%= link_to book_image(book), book %><br>
-        <%= link_to book.title, book %>
+        <div class="card">
+          <div class="book-image"><%= book_image book %></div>
+          <div class="container">
+            <h4><%= link_to book.title.truncate(Settings.book_title), admins_book_path(book) %></h4>
+            <%= book.author %><br>
+            <div class="book_rating">
+              <%= render "books/book_rating", book: book %>
+            </div>
+            <br>
+          </div>
+        </div>
       <% end %>
     </div>
     <div class="col-md-6">
@@ -23,28 +32,21 @@
               <%= user_avatar activity.user %>
             </div>
             <div class="col-md-10">
-              <%= link_to activity.user.name, activity.user %> đã viết bài đánh giá cho
+              <%= link_to activity.user.name, activity.user %> đã viết bài đánh gía cho
               <%= link_to activity.book.title, activity.book %><br>
-              Rating:
-              <% 1.upto 5 do |index| %>
-                <%
-                  star =
-                    if index <= activity.review.rating
-                      "fa-star"
-                    elsif index - 0.5 == activity.review.rating
-                      "fa-star-half-o"
-                    else
-                      "fa-star-o"
-                    end
-                %>
-                <i class="fa <%= star %> rate fa-lg" style="color: yellow"></i>
-              <% end %><br>
-              <%= t "posted_ago", time: time_ago_in_words(activity.review.created_at) %>
-              | <%= link_to "See more", activity.review %>
+              Điểm:
+              <%= render "shared/stars", rating: activity.review.rating %>
+              <br>
+              <%= raw activity.review.content %>
+              <span class="timestamp">
+                <%= t "posted_ago", time: time_ago_in_words(activity.review.created_at) %>
+                | <%= link_to "Xem thêm", activity.review %>
+              </span>
             </div>
           </li>
         <% end %>
       </ul>
+      <%= will_paginate @feed_items %>
     </div>
   </div>
 <% end %>

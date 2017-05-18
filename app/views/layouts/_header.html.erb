@@ -16,7 +16,7 @@
           <li><%= link_to t("users"), users_path, id: "head" %></li>
           <% if current_user.admin? %>
             <li><%= link_to t("request"), admins_requests_path, id: "head" %></li>
-            <li><%= link_to "Report", admins_reports_path, id: "head" %></li>
+            <li><%= link_to "Báo cáo", admins_reports_path, id: "head" %></li>
           <% else %>
             <li><%= link_to t("request"), requests_path, id: "head" %></li>
           <% end %>

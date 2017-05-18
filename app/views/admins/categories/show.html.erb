@@ -3,7 +3,7 @@
 
 <div class="container">
   <div class="col-md-12">
-    <% @category.books.each do |book| %>
+    <% @books.each do |book| %>
       <div class="col-md-3">
         <div class="card">
           <div class="book-image"><%= book_image book %></div>
@@ -14,5 +14,6 @@
         </div>
       </div>
     <% end %>
+    <%= will_paginate @books %>
   </div>
 </div>

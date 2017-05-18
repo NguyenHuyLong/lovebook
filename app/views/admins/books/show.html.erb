@@ -1,33 +1,45 @@
-<%= provide :title, @book.title %>
-<div class="container">
-  <div class="col-md-12">
-    <div class="col-md-4">
-      <%= book_image_show @book %>
-    </div>
-    <div class="col-md-8">
-      <div class="col-md-12">
-        <div class="col-md-8"><h3><%= @book.title %></h3></div>
-        <div class="listButton">
+<% provide :title, @book.title %>
+<div class="row">
+  <div class="col-md-4">
+    <%= book_image_show @book %>
+  </div>
+  <div class="col-md-8">
+    <div class="col-md-12">
+      <div class="col-md-8">
+        <h3><b><%= @book.title %></b></h3>
+        <i><%= t "book.by" %></i> <%= @book.author %></br>
+      </div>
+      <div class="col-md-4">
+        <div class="col-md-6">
           <%= link_to t("edit"), edit_admins_book_path(@book),
-            class: "col-md-1 btn btn-success" %>
+            class: "btn btn-success" %>
         </div>
-        <div class="col-md-2 listButton">
+        <div class="col-md-6">
           <%= link_to t("delete"), admins_book_path(@book),
-            method: :delete, data: {confirm: t("confirm")}, class: "btn btn-danger"%>
+            method: :delete, data: {confirm: t("confirm")},
+            class: "btn btn-danger" %>
         </div>
       </div>
+    </div>
+
+    <div class="col-md-12">
       <div class="col-md-12">
-        <div class="col-md-12">
-          <div><h4><%= @book.author %></h4></div>
-          <div><h5><%= t "book.description" %><%= raw(@book.description) %></h5></div>
-          <div><h5><%= t "book.pages" %><%= @book.number_of_pages %></h5></div>
-          <div>
-            <h5><%= t "book.publish_date" %>
-            <%= publish_date @book %>
-            </h5>
-          </div>
+        <div class="book_rating">
+          <%= render "books/book_rating", book: @book %>
         </div>
       </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="book-description">
+        <%= raw @book.description  %>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <b><%= t "book.publish_date" %></b><%= l @book.publish_date %></br>
+      <b><%= t "book.pages" %></b><%= @book.number_of_pages %><br>
+      <b>Thể loại: </b><%= link_to @book.category.name,
+        admins_category_path(@book.category) %>
     </div>
   </div>
 </div>
