@@ -1,13 +1,13 @@
 <% @user ||= current_user %>
 
 <div class="stats">
-  <div class="col-md-3">
+  <div class="col-md-5">
     <div id="following">
       <%= @user.following.count %>
     </div>
     <%= link_to t("following"), relationships_path(id: @user, title: :following) %>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-5">
     <div id="followers">
       <%= @user.followers.count %>
     </div>

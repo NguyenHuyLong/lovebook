@@ -6,6 +6,7 @@
     <section class="stats">
       <%= render "shared/stats" %>
     </section>
+    <br>
     <%= render "follow_form" %>
   </div>
 
@@ -45,8 +46,8 @@
               <div class="col-md-8">
                 <%= t "user.show.write_review" %><%= link_to review.book.title, review.book %>
                 <%= t "user.show.review_in", time: time_ago_in_words(review.created_at) %><br>
-                <%= t "user.show.rate", rate: review.rating %><br>
-                <%= link_to "See more", review %>
+                Điểm: <%= render "shared/stars", rating: review.rating %><br>
+                <%= link_to "Xem thêm", review %>
               </div>
             </li>
           <% end %>

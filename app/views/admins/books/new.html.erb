@@ -5,33 +5,33 @@
     <%= form_for [:admins, @book], html: {multipart: true} do |f| %>
       <%= render "shared/error_messages", object: f.object %>
       <% if @request %>
-        <%= f.label :title %>
+        <%= f.label :title, "Tên sách" %>
         <%= f.text_field :title, value: @request.book_name, class: "form-control" %>
 
-        <%= f.label :author %>
+        <%= f.label :author, "Tác gỉa" %>
         <%= f.text_field :author, value: @request.book_author, class: "form-control" %>
       <% else %>
-        <%= f.label :title %>
+        <%= f.label :title, "Tên sách" %>
         <%= f.text_field :title, class: "form-control" %>
 
-        <%= f.label :author %>
+        <%= f.label :author, "Tác gỉa" %>
         <%= f.text_field :author, class: "form-control" %>
       <% end %>
 
-      <%= f.label :description %>
+      <%= f.label :description, "Giới thiệu" %>
       <%= f.text_area :description, class: "ckeditor" %>
 
-      <%= f.label :publish_date %>
+      <%= f.label :publish_date, "Ngày phát hành" %>
       <%= f.date_field :publish_date, class: "form-control" %>
 
       <%= f.label :number_of_pages, t(".number_of_book") %>
       <%= f.number_field :number_of_pages, class: "form-control" %>
 
-      <%= f.label :category %>
+      <%= f.label :category, "Thể loại" %>
       <%= f.select :category_id, @categories.collect{|key| [key.name, key.id]},
         {include_blank: t("book.search.category_blank")}, {class: "form-control"} %>
 
-      <%= f.label :image %>
+      <%= f.label :image, "Ảnh bìa" %>
       <%= f.file_field :image, class: "upload-image" %>
 
       <%= f.submit t(".create_book"), class: "btn btn-primary" %>

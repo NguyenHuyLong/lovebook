@@ -25,7 +25,9 @@
     </div>
     <div class="col-md-12">
       <b><%= t "book.publish_date" %></b><%= l @book.publish_date %></br>
-      <b><%= t "book.pages" %></b><%= @book.number_of_pages %>
+      <b><%= t "book.pages" %></b><%= @book.number_of_pages %></br>
+      <b>Thể loại: </b><%= link_to @book.category.name,
+        category_path(@book.category) %>
     </div>
   </div>
 </div>
@@ -39,7 +41,8 @@
     <% @reviews.each do |review| %>
       <li id="review-<%= review.id %>">
         <div class="col-md-10">
-          <%= link_to review.user.name, review.user %> rate it
+          <%= user_avatar review.user %>
+          <%= link_to review.user.name, review.user %> đánh gía
           <%= render "shared/stars", rating: review.rating %>
         </div>
 
@@ -55,7 +58,7 @@
           <%= raw(review.content) %>
           <span class="timestamp">
             <%= t "posted_ago", time: time_ago_in_words(review.created_at) %> |
-            <%= link_to "See more", review %>
+            <%= link_to "Xem thêm", review %>
           </span>
         </div>
       </li>

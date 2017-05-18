@@ -27,7 +27,7 @@ class RequestsController < ApplicationController
 
   def update
     if @request.update_attributes request_params
-      flash[:success] = t "user.profile_updated"
+      flash[:success] = "Cập nhật thành công"
       redirect_to requests_path
     else
       render :edit

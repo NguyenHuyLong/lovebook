@@ -8,7 +8,7 @@ en:
   books: "Sách"
   slogan: "Bởi vì sách là thế giới"
   sign_up_now: "Đăng ký!"
-  remember_me: ""
+  remember_me: "Nhớ mật khẩu"
   error: "lỗi"
   error_form: "Có"
   new_user: "Người dùng mới?"
@@ -56,14 +56,14 @@ en:
       cannot_update_comment: "Không thể cập nhật bình luận"
       cannot_create_comment: "Không thể bình luận"
     success:
-      delete_category: "Category was successfully deleted"
-      update_category: "Category was successfully updated"
-      book_create: "Book was successfully created"
-      book_delete: "Book was successfully deleted"
-      book_update: "Book was successfully updated"
-      create_review: "Create review successful"
-      send_request: "Send request successful!"
-      review_update: "Book was successfully updated"
+      delete_category: "Đã xóa thành công"
+      update_category: "Cập nhật thành công"
+      book_create: "Thêm mới sách thành công"
+      book_delete: "Xóa sách thành công"
+      book_update: "Cập nhật sách thành công"
+      create_review: "Thêm mới bài đánh gía thành công"
+      send_request: "Yêu cầu của bạn đã được gửi thành công!"
+      review_update: "Chỉnh sửa sách thành công"
 
   user:
     signup: "Đăng ký"
@@ -89,6 +89,7 @@ en:
     follower: "%{follower} người theo dõi"
     all_user: "Thành viên"
     request:
+      author: "Tác gỉa"
       new_title: "Gửi yêu cầu sách"
       all: "Yêu cầu"
       book_name: "Tên sách"
@@ -135,3 +136,41 @@ en:
   time:
     formats:
       default: "%d-%m-%Y"
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "nửa phút"
+      x_seconds:
+        one:   "1 giây"
+        other: "%{count} giây"
+      x_minutes:
+        one:   "1 phút"
+        other: "%{count} phút"
+      about_x_hours:
+        one:   "khoảng 1 giờ"
+        other: "khoảng %{count} giờ"
+      x_days:
+        one:   "1 ngày"
+        other: "%{count} ngày"
+      about_x_months:
+        one:   "khoảng 1 tháng"
+        other: "khoảng %{count} tháng"
+      x_months:
+        one:   "1 tháng"
+        other: "%{count} tháng"
+      about_x_years:
+        one:   "khoảng 1 năm"
+        other: "khoảng %{count} năm"
+      over_x_years:
+        one:   "hơn 1 năm"
+        other: "hơn %{count} năm"
+      almost_x_years:
+        one:   "gần 1 năm"
+        other: "gần %{count} năm"
+    prompts:
+      year:   "Năm"
+      month:  "Tháng"
+      day:    "Ngày"
+      hour:   "Giờ"
+      minute: "Phút"
+      second: "Giây"

@@ -3,7 +3,8 @@ class Admins::CategoriesController < ApplicationController
   before_action :find_category, except: [:index, :create]
 
   def index
-    @categories = Category.all.order created_at: :desc
+    @categories = Category.paginate(page: params[:page], per_page: 10)
+      .order created_at: :desc
     @category = Category.new
   end
 
@@ -18,6 +19,8 @@ class Admins::CategoriesController < ApplicationController
   end
 
   def show
+    @books = @category.books.paginate(page: params[:page], per_page: 20)
+      .order created_at: :desc
   end
 
   def update

@@ -4,7 +4,9 @@ class Admins::BooksController < ApplicationController
   before_action :find_request, only: :new
 
   def index
-    @books = Book.all
+    @books = Book.search(params[:search_param], params[:category_id])
+      .paginate page: params[:page], per_page: 20
+    @categories = Category.all
   end
 
   def new

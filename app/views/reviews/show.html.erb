@@ -1,7 +1,7 @@
 <div class="row">
   <div class="row">
     <div class="col-md-9">
-      <h3><%= link_to @review.user.name, @review.user %>'s Review >
+      <h3>Bài đánh gía của <%= link_to @review.user.name, @review.user %> >
       <%= link_to @review.book.title, @review.book %></h3>
     </div>
     <div class="col-md-2">
@@ -15,7 +15,7 @@
             data: {confirm: t("confirm")}, class: "btn btn-danger" %>
         <% else %>
           <i class="fa fa-flag" aria-hidden="true"></i>
-          <%= link_to "Report", "#", {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-report'} %>
+          <%= link_to "Báo cáo", "#", {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-report'} %>
         <% end %>
       </h4>
       <div class="modal fade" id="modal-report" role="dialog">
@@ -23,15 +23,16 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Report</h4>
+              <h4 class="modal-title">Báo cáo</h4>
             </div>
             <div class="modal-body">
               <%= form_for @report, html: {method: :post} do |f| %>
                 <%= f.hidden_field :review_id, value: @review.id %>
                 <%= f.hidden_field :reported_user, value: @review.user.id %>
 
+                <%= f.label :content, "Lý do báo cáo" %>
                 <%= f.text_area :content, class: "form-control" %>
-                <%= f.submit "Submit", class: "btn btn-primary" %>
+                <%= f.submit "Gửi báo cáo", class: "btn btn-primary" %>
               <% end %>
             </div>
             <div class="modal-footer">
@@ -62,6 +63,8 @@
   </div>
 
   <div class="col-md-8">
+    Điểm: <%= render "shared/stars", rating: @review.rating %>
+    <br>
     <%= raw @review.content %>
     <span class="timestamp">
       <%= t "posted_ago", time: time_ago_in_words(@review.created_at) %>
