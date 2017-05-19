@@ -10,5 +10,6 @@
   </div>
   <%= f.label :content, t("user.reviews.content") %>
   <%= f.text_area :content, size: "60x12", class: "ckeditor" %>
+  <br>
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

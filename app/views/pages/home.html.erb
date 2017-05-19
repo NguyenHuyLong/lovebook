@@ -15,7 +15,7 @@
         <div class="card">
           <div class="book-image"><%= book_image book %></div>
           <div class="container">
-            <h4><%= link_to book.title.truncate(Settings.book_title), admins_book_path(book) %></h4>
+            <h4><%= link_to book.title.truncate(Settings.book_title), book_path(book) %></h4>
             <%= book.author %><br>
             <div class="book_rating">
               <%= render "books/book_rating", book: book %>
