@@ -18,13 +18,14 @@
             <td><%= report.user.name %></td>
             <td>
               <% if report.review %>
-                <%= link_to "Bài đánh gía của", report.review %>
+                <%= link_to "Bài đánh gía", report.review %> của
               <% else %>
                 Bài đánh gía của
               <% end %>
               <%= User.find_by(id: report.reported_user).name %>
-              về
-              <%= link_to report.review.book.title, report.review.book %>
+              <% if report.review %>
+                về <%= link_to report.review.book.title, report.review.book %>
+              <% end %>
             </td>
             <td><%= report.content %></td>
             <td><%= report.created_at %></td>
