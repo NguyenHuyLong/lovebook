@@ -13,6 +13,6 @@
   <i class="fa <%= star %> rate fa-lg" style="color: yellow"></i>
 <% end %>
 
-<%= book.rating %>
+<%= book.rating.round(2) %>
 
 (<%= book.reviews.count %> đánh gía)

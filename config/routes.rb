@@ -22,5 +22,6 @@ Rails.application.routes.draw do
     resources :books
     resources :requests, only: [:index, :update, :destroy]
     resources :reports, only: [:index, :destroy]
+    resources :users, only: :destroy
   end
 end
