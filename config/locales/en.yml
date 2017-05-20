@@ -55,6 +55,7 @@ en:
       cannot_delete_comment: "Không thể xóa bình luận"
       cannot_update_comment: "Không thể cập nhật bình luận"
       cannot_create_comment: "Không thể bình luận"
+      delete_user: "Không thể xóa thành viên"
     success:
       delete_category: "Đã xóa thành công"
       update_category: "Cập nhật thành công"
@@ -64,6 +65,7 @@ en:
       create_review: "Thêm mới bài đánh gía thành công"
       send_request: "Yêu cầu của bạn đã được gửi thành công!"
       review_update: "Chỉnh sửa sách thành công"
+      delete_user: "Xóa thành viên thành công"
 
   user:
     signup: "Đăng ký"
@@ -140,6 +142,12 @@ en:
   datetime:
     distance_in_words:
       half_a_minute: "nửa phút"
+      less_than_x_minutes:
+        one: "ít hơn một phút"
+        other: "ít hơn %{count} phút"
+      less_than_x_seconds:
+        one: "ít hơn 1 giây"
+        other: "ít hơn %Ơcount} giây"
       x_seconds:
         one:   "1 giây"
         other: "%{count} giây"
@@ -174,3 +182,21 @@ en:
       hour:   "Giờ"
       minute: "Phút"
       second: "Giây"
+
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: "không được để trống"
+      empty: "không được để trống"
+      invalid: "không hợp lệ"
+      not_a_number: "không phải số"
+      not_an_integer: "phải ở dạng số"
+      too_long:
+        other: "quá dài (tối đa là %{count} kí tự)"
+      too_short:
+        other: "quá ngắn (tối thiểu là %Ơcount} kí tự)"
+    template:
+      body: "Xảy ra vấn đề ở những trường sau:"
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other: "%{count} errors prohibited this %{model} from being saved"
