@@ -54,7 +54,7 @@
         <%= @review.book.author %><br>
         <div class="book_rating">
           <%= render "shared/stars", rating: @review.book.rating %>
-          <%= @review.book.rating %>
+          <%= @review.book.rating.round(2) %>
           (<%= @review.book.reviews.count %> đánh giá)
         </div>
         <br>
