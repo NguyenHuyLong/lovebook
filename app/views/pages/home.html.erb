@@ -8,7 +8,7 @@
     <%= link_to t("sign_up_now"), new_user_path, class: "btn btn-lg btn-primary" %>
   </div>
 <% else %>
-  <div class="row">
+  <div class="row homePage">
     <div class="col-md-3">
       <h2>Hôm nay <br> bạn đọc gì?</h2>
       <% @random_books.each do |book| %>
@@ -23,9 +23,10 @@
             <br>
           </div>
         </div>
+        <br>
       <% end %>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 feed">
       <ul class="users">
         <% @feed_items.each do |activity| %>
           <li>

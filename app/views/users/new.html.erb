@@ -1,9 +1,11 @@
 <% provide :title, t("user.signup") %>
 <% provide :button_text, t("user.button.create_account") %>
-<h1><%= t "user.signup" %></h1>
+<div class="registerPage">
+  <h2 class="textLogin"><%= t "user.signup" %></h2>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= render "form" %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= render "form" %>
+    </div>
   </div>
 </div>

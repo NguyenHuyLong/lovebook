@@ -91,7 +91,7 @@ p {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
+  border-top: 1px solid #ddd;
   color: $gray-light;
   a {
     color: $gray;
@@ -188,6 +188,10 @@ input {
   padding: 2px 16px;
 }
 
+.bodyPage {
+  min-height: 520px;
+}
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
@@ -219,6 +223,7 @@ input {
 .search {
   width: 800px;
   height: 50px;
+  margin-left: 15px;
 }
 
 .book-index {
@@ -323,3 +328,42 @@ th {
   padding: 12px 0;
   border-bottom: 1px solid $gray-lighter;
 }
+
+.footerCss {
+  padding-top: 20px;
+  padding-left: 75px;
+}
+
+.userTab {
+  margin-top: 30px;
+}
+
+.userInfo {
+  margin-top: 15px;
+}
+
+.homePage {
+  margin-top: 20px;
+}
+
+.feed {
+  margin-top: 15px;
+}
+
+.paginate {
+  margin-left: 40px;
+}
+
+.loginPage {
+  margin-top: 100px;
+}
+
+.textLogin {
+  color: #333333;
+}
+
+.registerPage {
+  margin-top: 50px;
+}
+
+
