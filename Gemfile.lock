@@ -64,9 +64,6 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    ckeditor (4.0.0)
-      mime-types
-      orm_adapter
     code_analyzer (0.4.7)
       sexp_processor
     codeclimate-engine-rb (0.4.0)
@@ -275,7 +272,6 @@ GEM
     nio4r (2.0.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
-    orm_adapter (0.5.0)
     parser (2.4.0.0)
       ast (~> 2.2)
     pg (0.18.4)
@@ -438,7 +434,6 @@ DEPENDENCIES
   bundler-audit
   byebug
   carrierwave
-  ckeditor
   coffee-rails (~> 4.2)
   config
   database_cleaner (~> 1.5)

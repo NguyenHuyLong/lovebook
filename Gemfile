@@ -23,7 +23,6 @@ gem "carrierwave"
 gem "mini_magick"
 gem "fog"
 gem "font-awesome-rails"
-gem "ckeditor"
 gem "public_activity"
 
 group :development, :test do

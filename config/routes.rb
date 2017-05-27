@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
-
   root "pages#show", title: "home"
 
   get "/pages/*title", to: "pages#show"
