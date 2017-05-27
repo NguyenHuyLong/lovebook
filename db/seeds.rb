@@ -14,3 +14,11 @@ User.create!(name: "Admin", email: "admin@gmail.com",
   User.create!(name: name, email: email, password: password,
     password_confirmation: password)
 end
+
+Category.create! ([
+  {name: "Việt Nam danh tác"},
+  {name: "Lãng mạn"},
+  {name: "Trinh thám"},
+  {name: "Thiếu nhi"},
+  {name: "Gíao dục"}
+])
